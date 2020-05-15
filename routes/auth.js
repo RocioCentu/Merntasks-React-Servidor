@@ -1,6 +1,5 @@
 // rutas para autenticar usuarios
-const header = new Headers();
-header.append('Access-Control-Allow-Origin', '*');
+
 //importar express
 const express= require('express');
 const router = express.Router();
