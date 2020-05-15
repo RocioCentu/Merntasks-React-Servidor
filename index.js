@@ -35,10 +35,8 @@ app.use('/api/proyectos', require('./routes/proyectos'));
 app.use('/api/tareas', require('./routes/tareas'));
 
 //arrarncar el servidor
-/*app.listen(port,()=>{
-    console.log('el servidor esta funcionando en el puerto ${PORT} ');
-})*/
-// Start node server
-app.listen( app.get( 'port' ), function() {
-  console.log( 'Node server is running on port ' + app.get( 'port' ));
-  });
+app.listen(port,()=>{
+    console.log(process.env.DB_MONGO);
+    console.log(process.env.port);
+    if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
+});
