@@ -20,11 +20,7 @@ app.use(express.json({extended:true}));
   
 //creando puerto de la app
 const PORT = process.env.PORT || 4000;
-//importaar rutas
-app.use('/api/usuarios', require('./routes/usuarios'));
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/proyectos', require('./routes/proyectos'));
-app.use('/api/tareas', require('./routes/tareas'));
+
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -44,6 +40,11 @@ app.use((req, res, next) => {
     )
   });
 
+  //importaar rutas
+app.use('/api/usuarios', require('./routes/usuarios'));
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/proyectos', require('./routes/proyectos'));
+app.use('/api/tareas', require('./routes/tareas'));
 
 //arrarncar el servidor
 app.listen(PORT,'0.0.0.0',()=>{
