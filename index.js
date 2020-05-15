@@ -12,7 +12,7 @@ conectarDB();
 //habilitar cors
 
 
-app.use();
+app.use(cors());
 
 
   
