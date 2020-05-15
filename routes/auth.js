@@ -1,20 +1,19 @@
-// rutas para autenticar usuarios
-
-//importar express
-const express= require('express');
+// Rutas para autenticar usuarios
+const express = require('express');
 const router = express.Router();
+const { check } = require('express-validator');
 const authController = require('../controllers/authController');
-const {check} = require('express-validator');
-const auth= require('../middlewar/auth');
+const auth = require('../middleware/auth');
 
-//iniciar sesion
-//api/auth
+// Iniciar sesión
+// api/auth
+router.post('/', 
+    authController.autenticarUsuario
+);
+
+// Obtiene el usuario autenticado
 router.get('/',
-auth,
-authController.usuarioAutenticado);
-
-//api/auth
-router.post('/',
-authController.autenticarUsuario);
-
-module.exports= router;
+    auth,
+    authController.usuarioAutenticado
+);
+module.exports = router;

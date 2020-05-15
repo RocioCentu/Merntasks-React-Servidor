@@ -1,40 +1,39 @@
-// rutas para proyectos
-
-//importar express
-const express= require('express');
+const express = require('express');
 const router = express.Router();
 const proyectoController = require('../controllers/proyectoController');
-const {check} = require('express-validator');
-const auth= require('../middlewar/auth');
+const auth = require('../middleware/auth');
+const { check } = require('express-validator');
 
-//api/proyectos
-router.post('/',
-//una vez q pasa el auth va al metodo del controller
-auth,
-[
-    check('nombre','El nombre es obligatorio').not().isEmpty()
-],
-proyectoController.crearProyecto);
 
-//para ver proyectos
-router.get('/',
-//una vez q pasa el auth va al metodo del controller
-auth,
-proyectoController.obtenerProyectos);
+// Crea proyectos
+// api/proyectos
+router.post('/', 
+    auth,
+    [
+        check('nombre', 'El nombre del proyecto es obligatoio').not().isEmpty()
+    ],
+    proyectoController.crearProyecto
+);
 
-//actualizar  proyecto
-router.put('/:id',
-//una vez q pasa el auth va al metodo del controller
-auth,
-[
-    check('nombre','El nombre es obligatorio').not().isEmpty()
-],
-proyectoController.actualizarProyecto);
+// Obtener todos los proyectos
+router.get('/', 
+    auth,
+    proyectoController.obtenerProyectos
+)
 
-//eliminar  proyecto
-router.delete('/:id',
-//una vez q pasa el auth va al metodo del controller
-auth,
-proyectoController.eliminarProyecto);
+// Actualizar proyecto via ID
+router.put('/:id', 
+    auth,
+    [
+        check('nombre', 'El nombre del proyecto es obligatoio').not().isEmpty()
+    ],
+    proyectoController.actualizarProyecto
+);
 
-module.exports= router;
+// Eliminar un Proyecto
+router.delete('/:id', 
+    auth,
+    proyectoController.eliminarProyecto
+);
+
+module.exports = router;

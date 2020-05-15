@@ -1,21 +1,19 @@
-const mongoose= require('mongoose');
-mongoose.set('useCreateIndex', true);
-const ProyectoSchema= mongoose.Schema({
-      nombre:{
-        type:String,
-        required: true,
-        trim:true
-      },
-     
-      creador:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref: 'Usuario'
+const mongoose = require('mongoose');
 
-      },
-      creado:{
-        type:Date,
-       default: Date.now()
-      } 
+const ProyectoSchema = mongoose.Schema({
+    nombre: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    creador: {
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Usuario'
+    },
+    creado: {
+        type: Date,
+        default: Date.now()
+    }
 });
 
-module.exports= mongoose.model('Proyecto',ProyectoSchema);
+module.exports = mongoose.model('Proyecto', ProyectoSchema);

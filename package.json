@@ -1,29 +1,24 @@
 {
-  "name": "mentaskservidor",
+  "name": "merntaskservidor",
   "version": "1.0.0",
-  "description": "MERN API para MERN TASK",
+  "description": "MERN API para MERN TASKS",
   "main": "index.js",
   "scripts": {
     "start": "node .",
-    "dev": "nodemon"
+    "dev": "nodemon ."
   },
-  "keywords": [
-    "Rocio",
-    "Centurion"
-  ],
-  "author": "",
+  "author": "Juan Pablo De la torre",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^2.0.3"
+    "nodemon": "^2.0.0"
   },
   "dependencies": {
-    "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "express-validator": "^6.4.1",
+    "express-validator": "^6.2.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.11"
+    "mongoose": "^5.7.12"
   }
 }
