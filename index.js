@@ -11,10 +11,25 @@ const app = express();
 conectarDB();
 //habilitar cors
 
+'use strict';
 
-app.use(cors());
-// habilitar express.json para leer datos que el usurio coloque
-app.use(express.json({extended:true}));
+exports.handler = function(event, context) {
+    
+    var responseCode = 200;
+    
+    var response = {
+        statusCode: responseCode,
+        headers: {
+            "x-custom-header" : "my custom header value",
+            "Access-Control-Allow-Origin": "*"
+        },
+        body: JSON.stringify(event)
+    };
+    
+    context.succeed(response);
+};
+
+app.use();
 
 
   
