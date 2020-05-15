@@ -19,6 +19,7 @@ exports.autenticarUsuario=async(req,res)=>{
 
     try{
         //revisar que el usuario este registrado 
+        res.header('Access-Control-Allow-Origin', '*');
        let usuario=await Usuario.findOne({email});
        
        if(!usuario){
