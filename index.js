@@ -19,26 +19,14 @@ app.use(express.json({extended:true}));
 
   
 //creando puerto de la app
-const PORT = process.env.PORT || 4000;
+const port = process.env.port || 4000;
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    next();
-  });
-  
-  app.get('/jokes/random', (req, res) => {
-    request(
-      { url: 'https://joke-api-strict-cors.appspot.com/jokes/random' },
-      (error, response, body) => {
-        if (error || response.statusCode !== 200) {
-          return res.status(500).json({ type: 'error', message: err.message });
-        }
-  
-        res.json(JSON.parse(body));
-      }
-    )
-  });
 
   //importaar rutas
 app.use('/api/usuarios', require('./routes/usuarios'));
@@ -47,6 +35,6 @@ app.use('/api/proyectos', require('./routes/proyectos'));
 app.use('/api/tareas', require('./routes/tareas'));
 
 //arrarncar el servidor
-app.listen(PORT,'0.0.0.0',()=>{
+app.listen(port,'0.0.0.0',()=>{
     console.log('el servidor esta funcionando en el puerto ${PORT} ');
 })
