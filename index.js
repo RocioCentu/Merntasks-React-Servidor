@@ -19,7 +19,7 @@ app.use(express.json({extended:true}));
 
   
 //creando puerto de la app
-const port = process.env.port || 4000;
+const port = process.env.port || 1337;
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
